@@ -49,7 +49,7 @@ const postUser = async (req, res) => {
     const queryData = [Id, password];
 
     const results = {};
-    results.result = ture;
+    results.result = true;
     results.error = [];
     results.Id = Id;
     results.password = password;
