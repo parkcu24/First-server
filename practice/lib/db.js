@@ -55,7 +55,7 @@ const postUser = async (req, res) => {
     results.password = password;
 
     try {
-        const construction = await pool.getConnection(async conn => conn);
+        const connection = await pool.getConnection(async conn => conn);
         try {
             const [row, fields] = await connection.query(query, queryData);
         } catch(err) {
