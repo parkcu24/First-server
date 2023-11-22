@@ -1,6 +1,6 @@
 export default {
   'COMPANY': 'Login',
-  'SERVER_PORT': 80,
+  'SERVER_PORT': 3000,
   'DB': {
     'DATABASE': 'login',
     'PORT': 3306,

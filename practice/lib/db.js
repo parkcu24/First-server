@@ -39,4 +39,38 @@ const getUserInfo = async(req,res) => {
     timeLog('[GET] user-info called // '+JSON.stringify(req.query)+ ' // ' + JSON.stringify(results));
 };
 
-export {getUserInfo};
+// ------------ post-user--------------------
+const postUser = async (req, res) => {
+    const Id = req.body.Id;
+    const password = req.body.password;
+
+    const query = 'INSERT INTO user(Id, password) VALUES (?, ?);';
+
+    const queryData = [Id, password];
+
+    const results = {};
+    results.result = ture;
+    results.error = [];
+    results.Id = Id;
+    results.password = password;
+
+    try {
+        const construction = await pool.getConnection(async conn => conn);
+        try {
+            const [row, fields] = await connection.query(query, queryData);
+        } catch(err) {
+            results.result = false;
+        results.error.push('Query Error');
+        }
+        connection.release();
+    } catch(err) {
+        results.result = false;
+        results.error.push('DB Eroor');
+    }
+
+    res.send(results);
+    consoleBar()
+    timeLog('[POST] user called //' + JSON.stringify(req.body) + '//' + JSON.stringify(results));
+
+}
+export {getUserInfo, postUser};

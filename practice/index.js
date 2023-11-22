@@ -6,7 +6,7 @@ import cors from 'cors';
 import config from './config/config.js';
 import { consoleBar, timeLog } from './lib/common.js';
 import { ping } from './controller/system.js';
-import {getUserInfo} from './lib/db.js';
+import {getUserInfo, postUser} from './lib/db.js';
 
 // -------------------------- router set ---------------------
 
@@ -21,6 +21,7 @@ const router = express.Router();
 
 router.route('/ping').get(ping);
 router.route('/user-info').get(getUserInfo)
+router.route('/user').post(postUser);
 
 //---------------------------server start--------------
 app.use('/test/api/v1', router)
